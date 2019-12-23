@@ -1,0 +1,40 @@
+{
+  "name": "simple-clothing-store",
+  "version": "0.0.1",
+  "description": "Simple webstore implementation with Paypal & Printful integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "build-tux": "cd ../frontend && npm run build && mv build ../backend && cd ../backend && npm start",
+    "build-win": "cd ../frontend && npm run build && move build ../backend && cd ../backend && npm start",
+    "build-tux-clean": "rmdir -r build && npm run build-tux",
+    "build-win-clean": "RMDIR build /S && npm run build-win"
+  },
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.2",
+    "currency.js": "^1.2.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "8.1.x"
+  },
+  "repository": {
+    "url": "https://github.com/kerkkoh/simple-clothing-store"
+  },
+  "license": "MIT",
+  "keywords": [
+    "printful",
+    "ecommerce",
+    "paypal",
+    "react",
+    "nodejs",
+    "javascript"
+  ],
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.2"
+  }
+}
