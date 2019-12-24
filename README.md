@@ -2,7 +2,7 @@
 
 ![banner](https://i.imgur.com/fg8F52a.png)
 
-[![license](https://img.shields.io/github/license/kerkkoh/simple-clothing-store.svg)](LICENSE)
+[![GitHub license](https://img.shields.io/github/license/kerkkoh/simple-clothing-store)](https://github.com/kerkkoh/simple-clothing-store/blob/master/LICENSE.md)
 
 This project is a simple **clothing store** implemented with **React** and **Node.js**, aiming for an *almost* databaseless design by utilizing a **Printful** integration.
 
