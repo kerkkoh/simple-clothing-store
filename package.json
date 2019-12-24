@@ -1,0 +1,27 @@
+{
+  "name": "simple-clothing-store-demo",
+  "version": "0.0.1",
+  "description": "Simple webstore implementation with Paypal & Printful integration",
+  "scripts": {
+    "start": "cd backend && npm run build-tux",
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "8.1.x"
+  },
+  "repository": {
+    "url": "https://github.com/kerkkoh/simple-clothing-store"
+  },
+  "license": "MIT",
+  "keywords": [
+    "printful",
+    "ecommerce",
+    "paypal",
+    "react",
+    "nodejs",
+    "javascript"
+  ],
+  "devDependencies": {
+  }
+}
