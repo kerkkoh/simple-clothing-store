@@ -8,5 +8,5 @@ export default {
   description: 'Comfortable clothing',
   brand: 'CLOTHING',
   established: '2017',
-  paypalClientID: 'YOUR_PAYPAL_CLIENT_ID_HERE',
+  paypalClientID: 'ASjp9I91RNWO2A54J_Kq1oHW7M--_zDwRu1dQ0kSo38u32OMIqCaWrcEXBgkdOhygLavA_cZZPPSVojw',
 }
