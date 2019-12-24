@@ -102,7 +102,7 @@ app.post('/api/confirm/:orderId', async (req, res) => {
           res.sendStatus(200)
         } else {
           // This should run only in production \._./
-          pf.post(`orders/${orderID}/confirm`).success(() => res.sendStatus(200)).error(() => res.sendStatus(400))
+          // pf.post(`orders/${orderID}/confirm`).success(() => res.sendStatus(200)).error(() => res.sendStatus(400))
         }
       } else {
         res.sendStatus(400)
@@ -145,7 +145,8 @@ app.get('/api/orders/:orderId', (req, res) => {
  * Creates order with Printful's API
 */
 app.post('/api/orders', (req, res) => {
-  const {
+  res.sendStatus(12345)
+  /* const {
     firstName,
     lastName,
     email,
@@ -220,7 +221,7 @@ app.post('/api/orders', (req, res) => {
   }).error((error, info) => {
     console.error(info)
     res.sendStatus(400)
-  })
+  })*/
 })
 
 /**
