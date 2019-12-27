@@ -16,7 +16,7 @@ const Store = ({products}) => (
                 <figcaption>
                   <h5>{product.sync_product.name}</h5>
                   <h6>{currency(product.sync_variants[0].retail_price).format(true)}</h6>
-                  <Link className="btn btn-pinkish" to={`/product/${product.sync_product.id}`} role="button">View</Link>
+                  <Link className="btn btn-pinkish stretched-link" to={`/product/${product.sync_product.id}`} role="button">View</Link>
                 </figcaption>
               </figure>
             </div>
