@@ -1,13 +1,13 @@
 {
   "name": "simple-clothing-store",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple webstore implementation with Paypal & Printful integration",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "build-tux": "cd ../frontend && npm run build && mv build ../backend && cd ../backend && npm start",
-    "build-win": "cd ../frontend && npm run build && move build ../backend && cd ../backend && npm start",
+    "build-tux": "cd frontend && npm run build && mv build ../ && cd ../ && npm start",
+    "build-win": "cd frontend && npm run build && move build ../ && cd ../ && npm start",
     "build-tux-clean": "rmdir -r build && npm run build-tux",
     "build-win-clean": "RMDIR build /S && npm run build-win"
   },

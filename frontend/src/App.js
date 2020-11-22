@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
-  BrowserRouter as Router,
-  Route
+  Route,
+  BrowserRouter as Router
 } from 'react-router-dom'
-import axios from 'axios'
-import {Helmet} from 'react-helmet'
-import storeConfig from './config'
-import productsService from './services/products'
-import localStorageService from './services/localstorage'
-import Navigation from './components/Navigation'
-import Store from './components/Store'
+
 import Cart from './components/cart/Cart'
-import Product from './components/Product'
+import {Helmet} from 'react-helmet'
+import Loader from './components/utils/Loader'
+import Navigation from './components/Navigation'
 import Notification from './components/utils/Notification'
 import Order from './components/order/Order'
-import Loader from './components/utils/Loader'
+import Product from './components/Product'
+import Store from './components/Store'
+import axios from 'axios'
+import localStorageService from './services/localstorage'
+import productsService from './services/products'
+import storeConfig from './config'
 
 const App = () => {
   const [cart, setCart] = useState(localStorageService.getCart())
@@ -30,19 +31,11 @@ const App = () => {
     axios.get('/api/store')
       .then(response => setStoreInfo({
         ...response.data,
-        brand: storeConfig.brand,
-        companySuffix: storeInfo.companySuffix,
-        description: storeInfo.description,
-        established: storeInfo.established,
-        paypalClientID: storeInfo.paypalClientID
+        ...storeConfig,
       }))
       .catch(() => setConnectionNotification(['Sorry, there\'s a problem with the connection!', 'alert-danger']))
   }, [
-    storeInfo.brand,
-    storeInfo.companySuffix,
-    storeInfo.description,
-    storeInfo.established,
-    storeInfo.paypalClientID
+    storeInfo.brand
   ])
 
   // Init products
