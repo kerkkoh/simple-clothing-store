@@ -17,7 +17,7 @@ This project is a simple **clothing store** implemented with **React** and **Nod
 
 ## Demo
 
-The demo has a few limitations for quite obvious reasons.
+The demo has a few obvious limitations:
 1. You can't create new orders, some orders are included for you already to view
 2. You can't pay for your orders
 3. You can't buy anything, or receive products
@@ -27,25 +27,18 @@ The demo has a few limitations for quite obvious reasons.
 ## Background
 
 
-### Utilized technologies
+### Stack
 * APIs
   * [Printful REST API](https://www.printful.com/docs)
   * [Paypal REST API](https://developer.paypal.com/docs/api/overview/)
 * Backend
   * [Node.js](https://nodejs.org/en/)
   * [Express](https://www.npmjs.com/package/express)
-  * [currency.js](https://www.npmjs.com/package/currency.js)
-  * [@paypal/checkout-server-sdk](https://www.npmjs.com/package/@paypal/checkout-server-sdk)
-  * PrintfulClient utility class (No longer available through Printful)
 * Frontend
   * [React (with hooks, no classes)](https://reactjs.org/docs/hooks-intro.html)
   * [React router](https://www.npmjs.com/package/react-router)
   * [Bootstrap](https://getbootstrap.com/)
   * [SASS](https://sass-lang.com/)
-  * [Moment](https://www.npmjs.com/package/moment)
-  * [currency.js](https://www.npmjs.com/package/currency.js)
-  * [react-paypal-button-v2](https://www.npmjs.com/package/react-paypal-button-v2)
-  * [react-helmet](https://www.npmjs.com/package/react-helmet)
 
 ### What's working
 * Most frontend features:
@@ -71,6 +64,7 @@ The demo has a few limitations for quite obvious reasons.
   * Handling error cases and displaying messages
   * Cancelling of orders
   * Quantity for products in a basket
+  * Simple theming support
 * Backend:
   * Hiding information better (product information like printfiles & costs shouldn't be sent to the client)
   * Calculating shipping & VAT before confirming the order
@@ -100,50 +94,46 @@ These are some problem areas as of now:
 
 First, clone the repository from github.
 
-
-Now you're going to need to setup some configuration files and environmental variables:
+### Configuration
 1. Get your PayPal & Printful API keys
-2. Navigate to `simple-clothing-store/backend/`, and rename the file called `.env.template` to just `.env`
+2. Rename the file called `.env.template` to `.env`
 3. Set the variables in the `.env` file without inserting any spaces anywhere in the file. The variable names and comments should explain where to put what adequately. Save the file.
-4. Navigate to `simple-clothing-store/frontend/src/` and open the file `config.js`
-5. In this file you should specify some information that is displayed on the site. You should also include the same PayPal API client id in this file as a string.
-6. Navigate to `simple-clothing-store/backend/lib/` and open the file `datab.js`
+4. Navigate to the `frontend/src` folder and open the file `config.js`
+5. In this file you should specify some information that is displayed on the site. You should also include the same PayPal API client id, as in the .env file previously, as it is needed for the payment process.
+6. Navigate to the `lib` folder, and open the file `datab.js`
 7. In this file you can specify
     1. Product descriptions in the `items` array by specifying a product id (You can get the id by visiting the store frontend and going to the page of a product, and then viewing the url like `yoursite.com/product/5632658632` where `5632658632` would be the id) and then specifying a `description` string for it.
     2. Discount codes in the section `discounts`
     3. Your VAT (Value Added Tax) percent **as an integer**.
 
-Now you need to build the frontend and move the built folder into the backend and install everything.
-```
-cd simple-clothing-store/frontend
-npm install && npm build
-```
-Depending on the operating system, the command for moving the build folder varies, on Linux:
-```
-mv build ../backend
-```
-and on Windows: 
-```
-mv build ../backend
-```
-And then to install the backend:
-```
-cd ../backend
-npm install
-```
+### Installation
 
+As of version 0.0.2, you can use docker to perform all of the gruntwork of running the server for you. Simply run `docker-compose up`, and docker will spin up a new container with Simple Clothing Store running on it.
+
+If you do not wish to use Docker, you can build the frontend and run the backend manually. However, there are npm scripts for automating this.
+
+If you are running a Linux system, run `npm run build-tux`, which will build the frontend, move it into the appropriate folder (./build) and start the server.
+
+If you are running a Windows system, run `npm run build-win`, which will build the frontend, move it into the appropriate folder (./build) and start the server.
+
+Both of these scripts have a "-clean" variant (`npm run build-tux-clean` & `npm run build-win-clean`), which is something you want to use after the first build, in order to also delete the build folder before building it again.
 
 ## Usage
 
-To run the server, make sure you're in the `simple-clothing-store/backend` folder, and run:
+To run the server, make sure you're in the root folder, and run:
 ```
 npm start
 ```
+or alternatively with Docker Compose
+```
+docker-compose up
+```
+
 This will start the server, and host the production build frontend with the port `process.env.PORT` or 3001. You can set the PORT variable in the file `simple-clothing-store/backend/.env` by creating a new line with the port you want the system to run on. If you're using services like Heroku to host the system, they should set this variable for you.
 
 ## Contributing
 
-PRs accepted.
+PRs accepted and appreciated.
 
 ## License
 

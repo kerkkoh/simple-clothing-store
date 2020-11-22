@@ -4,7 +4,7 @@
 Howdy! o(*￣▽￣*)ブ
 
 
-I am the frontend that gets compiled to the production version with `npm run build` and then moved to the backend to be hosted on a single server. I'm mostly built with React, and my fancy looks come via Bootstrap and SASS.
+I am the frontend that gets compiled to the production version with `npm run build` and then moved to the root folder to be hosted on a single server. I'm mostly built with React, and my fancy looks come via Bootstrap and SASS.
 
 ## I'm using
   * [React (with hooks, no classes)](https://reactjs.org/docs/hooks-intro.html)

@@ -1,0 +1,15 @@
+version: "2"
+services:
+  simpleclothingstore:
+    build: .
+    command: npm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3001:3001"
+    environment: 
+      - DEMO=${DEMO}
+      - PRINTFUL_SECRET=${PRINTFUL_SECRET}
+      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID}
+      - PAYPAL_CLIENT_SECRET=${PAYPAL_CLIENT_SECRET}
