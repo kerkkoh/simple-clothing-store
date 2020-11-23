@@ -110,7 +110,7 @@ First, clone the repository from github.
 
 As of version 0.0.2, you can use docker to perform all of the gruntwork of running the server for you. Simply run `docker-compose up`, and docker will spin up a new container with Simple Clothing Store running on it.
 
-If you do not wish to use Docker, you can build the frontend and run the backend manually. However, there are npm scripts for automating this.
+If you do not wish to use Docker, you can build the frontend and run the backend manually. However, there are npm scripts for automating this. First run `npm install` in the root folder and then in the frontend folder.
 
 If you are running a Linux system, run `npm run build-tux`, which will build the frontend, move it into the appropriate folder (./build) and start the server.
 
