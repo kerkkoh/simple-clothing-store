@@ -8,20 +8,21 @@ import PropTypes from 'prop-types'
  * @param {function} setNotification - Function for setting the notification state
  */
 const Notification = ({notification, setNotification}) => {
-  if (notification.length === 2)
+  if (notification.length === 2) {
     return (
       <div className={`alert ${notification[1]} alert-dismissible fade show`} role="alert">
-        <button onClick={() => setNotification([])} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         {notification[0]}
+        <button onClick={() => setNotification([])} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     )
-  else
+  } else {
     return (<div></div>)
+  }
 }
 
 Notification.propTypes = {
   notification: PropTypes.array,
-  setNotification: PropTypes.func
+  setNotification: PropTypes.func,
 }
 
 export default Notification

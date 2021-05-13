@@ -33,6 +33,7 @@ const initProducts = () => {
                   ...data,
                   description:
                     dbEntry ?
+                      // eslint-disable-next-line max-len
                       dbEntry.description : `Open up backend/lib/datab.js, and in the array called "items" add in {id:${product.id}, description:'your description here'} to replace this!`,
                 } : prod
             })

@@ -16,14 +16,14 @@ const Shipment = ({shipment, getShipmentItemName}) => (
     {shipment.reshipment ? <b>This is a reshipment<br /></b> : <div></div>}
     <b>Items contained:</b>
     <ul>
-      {shipment.items.map(item => <li key={item.item_id}>{getShipmentItemName(item.item_id)} ({item.quantity})</li>)}
+      {shipment.items.map((item) => <li key={item.item_id}>{getShipmentItemName(item.item_id)} ({item.quantity})</li>)}
     </ul>
   </div>
 )
 
 Shipment.propTypes = {
   shipment: PropTypes.object,
-  getShipmentItemName: PropTypes.func
+  getShipmentItemName: PropTypes.func,
 }
 
 export default Shipment

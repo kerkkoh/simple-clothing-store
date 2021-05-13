@@ -18,15 +18,15 @@ const Price = ({order, setLoading, setOrderNotification, paid, setPaid, storeInf
           </div>
         </div>
         {
-          order.items.map(item =>
+          order.items.map((item) =>
             <div key={item.name} className="row justify-content-between">
               <div className="col-6">
                 {item.name} ({item.quantity})
               </div>
               <div className="col-4 text-right">
-                <div>${item.retail_price}</div>
+                <div>${item.retail_price || item.price}</div>
               </div>
-            </div>
+            </div>,
           )
         }
         <div className="row justify-content-between">
@@ -46,8 +46,8 @@ const Price = ({order, setLoading, setOrderNotification, paid, setPaid, storeInf
               <div className="col-4 text-right">
               ${costs.digitization}
               </div>
-            </div>
-            : <div></div>
+            </div> :
+            <div></div>
         }
         <div className="row justify-content-between">
           <div className="col-4">
@@ -81,8 +81,8 @@ const Price = ({order, setLoading, setOrderNotification, paid, setPaid, storeInf
               setLoading={setLoading}
               setOrderNotification={setOrderNotification}
               setPaid={setPaid}
-              clientID={storeInfo.paypalClientID}/>
-            : <div></div>
+              clientID={storeInfo.paypalClientID}/> :
+            <div></div>
         }
       </div>
     </div>

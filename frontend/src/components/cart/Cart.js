@@ -13,7 +13,7 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
 
   useEffect(() => {
     axios.get('/api/countries')
-      .then(response => setCountries(response.data))
+      .then((response) => setCountries(response.data))
       .catch(console.error)
   }, [])
 
@@ -46,16 +46,17 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
       zip,
       cart,
     }
-    if (form.state)
+    if (form.state) {
       body.state = form.state.value
+    }
 
     setContinuing(true)
     axios.post('/api/orders', body)
-      .then(response => {
+      .then((response) => {
         const order = response.data
         clearCart()
         history.push(`/order/${order}`)
-      }).catch(error => {
+      }).catch((error) => {
         console.error(error)
       })
   }
@@ -69,14 +70,15 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
     event.preventDefault()
     const code = event.target.discount.value
     axios.get(`/api/discount/${code}`)
-      .then(response => {
+      .then((response) => {
         const discount = response.data
         if (discount > 0) {
           applyDiscount(code, discount)
           setDiscountNotification(['Discount code applied!', 'alert-success'])
-        } else
+        } else {
           setDiscountNotification(['Sorry, this code isn\'t valid', 'alert-danger'])
-      }).catch(error => {
+        }
+      }).catch((error) => {
         console.error(error)
         setDiscountNotification(['Sorry, there\'s a problem with the connection!', 'alert-danger'])
       })
@@ -126,8 +128,8 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
                             </div>
                           ) : <div></div>
                         }
-                      </div>
-                      : <div className="mb-2">Shopping cart empty</div>
+                      </div> :
+                      <div className="mb-2">Shopping cart empty</div>
                   }
                 </div>
                 <div className="row justify-content-between">
@@ -147,8 +149,8 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
                     <div className="form-group col-md-6">
                       <label htmlFor="inputDiscount" className="col-form-label">Apply discount code</label>
                       <input type="text" className="form-control mb-2" name="discount" id="discount" placeholder="Discount code" defaultValue={cart.discountCode} required />
-                      <button type="submit" className="btn btn-pinkish">Apply</button>
-                      <button className="btn btn-pinkish ml-2" onClick={(event) => clearDiscount(event)}>Clear discount</button>
+                      <button type="submit" className="btn btn-pinkish mb-2 me-2">Apply</button>
+                      <button className="btn btn-pinkish mb-2" onClick={(event) => clearDiscount(event)}>Clear discount</button>
                     </div>
                   </div>
                 </form>
@@ -196,31 +198,31 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
                       <label htmlFor="inputCountry" className="col-form-label">Country</label>
                       {
                         countries ?
-                          <select name="country" value={selectedCountry} onChange={(event) => setSelectedCountry(event.target.value)} id="inputCountry" className="form-control" required>
+                          <select name="country" value={selectedCountry} onChange={(event) => setSelectedCountry(event.target.value)} id="inputCountry" className="form-select" required>
                             {
-                              countries.map(country =>
-                                <option key={country.code} value={country.code}>{country.name}</option>
+                              countries.map((country) =>
+                                <option key={country.code} value={country.code}>{country.name}</option>,
                               )
                             }
-                          </select>
-                          : <div></div>
+                          </select> :
+                          <div></div>
                       }
                     </div>
                     {
-                      selectedCountry && countries.find(country => country.code === selectedCountry).states ?
+                      selectedCountry && countries.find((country) => country.code === selectedCountry).states ?
                         <div className="form-group col-md-6">
                           <label htmlFor="inputState" className="col-form-label">State</label>
-                          <select name="state" id="inputState" className="form-control" required>
+                          <select name="state" id="inputState" className="form-select" required>
                             {
                               countries
-                                .find(country => country.code === selectedCountry).states
-                                .map(state =>
-                                  <option key={state.code} value={state.code}>{state.name}</option>
+                                .find((country) => country.code === selectedCountry).states
+                                .map((state) =>
+                                  <option key={state.code} value={state.code}>{state.name}</option>,
                                 )
                             }
                           </select>
-                        </div>
-                        : <div></div>
+                        </div> :
+                        <div></div>
                     }
                   </div>
                   <div className="form-row">
@@ -234,7 +236,7 @@ const Cart = ({cart, removeFromCart, history, storeInfo, applyDiscount, clearCar
                     </div>
                   </div>
                   {
-                    continuing ? <div className="spinner-border" role="status"><span className="sr-only">Loading...</span></div> : <button type="submit" className="btn btn-pinkish">Continue to payment</button>
+                    continuing ? <div className="spinner-border" role="status"><span className="sr-only">Loading...</span></div> : <button type="submit" className="btn btn-pinkish mt-3">Continue to payment</button>
                   }
                 </form>
               </div>

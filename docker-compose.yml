@@ -2,8 +2,9 @@ version: "2"
 services:
   simpleclothingstore:
     build: .
-    command: npm start
+    command: npm run start
     volumes:
+      - .:/app
       - .:/usr/app/
       - /usr/app/node_modules
     ports:
