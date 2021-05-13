@@ -2,13 +2,13 @@ import currency from 'currency.js'
 
 const getCart = () => {
   const cartJSON = window.localStorage.getItem('cart')
-  if (cartJSON){
+  if (cartJSON) {
     const newCart = JSON.parse(cartJSON)
     return {
       ...newCart,
-      items: newCart.items.map(product => {
+      items: newCart.items.map((product) => {
         return {...product, price: currency(product.price)}
-      })
+      }),
     }
   } else return {items: []}
 }
@@ -26,8 +26,8 @@ const removeFromCart = (index, cart) => {
 }
 
 const applyDiscount = (code, amount, cart) => {
-  const newCart = !code ? {...cart, discountAmount: undefined, discountCode: undefined}
-    : {...cart, discountAmount: amount, discountCode: code}
+  const newCart = !code ? {...cart, discountAmount: undefined, discountCode: undefined} :
+    {...cart, discountAmount: amount, discountCode: code}
   window.localStorage.setItem('cart', JSON.stringify(newCart))
   return newCart
 }
@@ -40,10 +40,11 @@ const clearCart = () => {
 
 const getOrders = () => {
   const ordersJSON = window.localStorage.getItem('orders')
-  if (ordersJSON)
+  if (ordersJSON) {
     return JSON.parse(ordersJSON)
-  else
+  } else {
     return []
+  }
 }
 
 const addOrder = (id, orders) => {
@@ -59,5 +60,5 @@ export default {
   getOrders,
   addOrder,
   applyDiscount,
-  clearCart
+  clearCart,
 }

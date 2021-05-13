@@ -6,6 +6,7 @@ module.exports = {
   },
   'extends': [
     'google',
+    'eslint:recommended',
   ],
   'globals': {
     'Atomics': 'readonly',
@@ -16,10 +17,10 @@ module.exports = {
   },
   'rules': {
     'indent': ['error', 2],
-    'linebreak-style': ['error','unix'],
-    'quotes': ['error','single'],
-    'semi': ['error','never'],
+    'linebreak-style': ['error', 'unix'],
+    'quotes': ['error', 'single'],
+    'semi': ['error', 'never'],
     'no-trailing-spaces': 'error',
-    'max-len': ['error', {'code': 120 }]
+    'max-len': ['error', {'code': 120}],
   },
-};
+}

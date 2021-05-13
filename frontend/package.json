@@ -3,22 +3,24 @@
   "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.1",
-    "bootstrap": "^4.4.1",
-    "confetti-js": "0.0.16",
-    "currency.js": "^1.2.2",
+    "bootstrap": "^5.0.0",
+    "confetti-js": "0.0.18",
+    "currency.js": "^2.0.3",
+    "jquery": "^3.6.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "npm:sass@^1.32.13",
+    "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
+    "react": "^17.0.2",
+    "react-animated-bg": "^1.1.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-paypal-button-v2": "^2.6.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-router-transition": "^2.1.0",
+    "react-scripts": "^4.0.3",
+    "react-transition-group": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "sass": "src/sass/custom.scss",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -43,7 +46,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.7.2",
-    "eslint-plugin-react": "^7.17.0"
+    "eslint": "^7.26.0",
+    "eslint-plugin-react": "^7.23.2"
   }
 }

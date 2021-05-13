@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import currency from 'currency.js'
 
@@ -9,7 +9,7 @@ const Product = ({product, addToCart}) => {
   const submitAddCart = (event) => {
     event.preventDefault()
     addToCart(
-      product.sync_variants.find(vari => vari.id === variant)
+      product.sync_variants.find((vari) => vari.id === variant),
     )
   }
 
@@ -29,8 +29,8 @@ const Product = ({product, addToCart}) => {
                   <button onClick={() => switchImage(false)} className="btn btn-pinkish">Back</button>
                   <button onClick={() => switchImage(true)} className="btn btn-pinkish">Next</button>
                 </div>
-              </figcaption>
-              : <div></div>
+              </figcaption> :
+              <div></div>
           }
         </figure>
       </div>
@@ -38,7 +38,7 @@ const Product = ({product, addToCart}) => {
         <figure className="figure">
           <figcaption>
             <h5>{product.sync_product.name}</h5>
-            <h6>{variant ? currency(product.sync_variants.find(vari => vari.id === variant).retail_price).format(true) : '...'}</h6>
+            <h6>{variant ? currency(product.sync_variants.find((vari) => vari.id === variant).retail_price).format(true) : '...'}</h6>
             <p>{product.description}</p>
             <form className="justify-content-center" onSubmit={(e) => submitAddCart(e)}>
               <div className="form-row justify-content-center">
@@ -48,11 +48,12 @@ const Product = ({product, addToCart}) => {
                     name="size"
                     value={variant}
                     onChange={(event) => setVariant(parseInt(event.target.value))}
-                    className="form-control"
+                    className="form-select mb-3"
+                    aria-label="Select product size"
                     required >
                     {
-                      product.sync_variants.map(vari =>
-                        <option key={vari.id} value={vari.id}>{vari.name}</option>
+                      product.sync_variants.map((vari) =>
+                        <option key={vari.id} value={vari.id}>{vari.name}</option>,
                       )
                     }
                   </select>
@@ -71,7 +72,7 @@ const Product = ({product, addToCart}) => {
 
 Product.propTypes = {
   product: PropTypes.object,
-  addToCart: PropTypes.func
+  addToCart: PropTypes.func,
 }
 
 export default Product

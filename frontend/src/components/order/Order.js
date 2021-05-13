@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import ConfettiGenerator from 'confetti-js'
 import PropTypes from 'prop-types'
 import moment from 'moment'
@@ -24,8 +24,6 @@ const Order = ({orderId, setOrderNotification, addOrder, orders, storeInfo}) => 
         'colors': [[40, 167, 69], [159, 9, 109]],
         'clock': '5',
         'rotate': true,
-        'width': `${document.body.clientWidth}`,
-        'height': `${document.body.clientHeight}`
       }
       const confetti = new ConfettiGenerator(confettiSettings)
       confetti.render()
@@ -45,21 +43,23 @@ const Order = ({orderId, setOrderNotification, addOrder, orders, storeInfo}) => 
     'other': 'There is an error with your order. Please contact us immediately to get this resolved.',
   }
 
-  const getShipmentItemName = (id) => order.items.find(item => item.id === id).name
+  const getShipmentItemName = (id) => order.items.find((item) => item.id === id).name
 
   useEffect(() => {
-    axios.get(`/api/orders/${orderId}`).then(res => {
+    axios.get(`/api/orders/${orderId}`).then((res) => {
       setOrder(res.data)
-      if (!orders.includes(parseInt(orderId)))
+      if (!orders.includes(parseInt(orderId))) {
         addOrder(parseInt(orderId))
+      }
       setPaid(res.data.status !== 'draft')
     }).catch(console.error)
   }, [orderId, addOrder, orders, loading, paid])
 
   const showIfNonEmpty = (content) => content ? <div>{content}<br /></div> : <div></div>
 
-  if (!order.id)
+  if (!order.id) {
     return <Loader />
+  }
 
   return (
     <div className="container">
@@ -69,13 +69,12 @@ const Order = ({orderId, setOrderNotification, addOrder, orders, storeInfo}) => 
             Order {order.id}&nbsp;
             {
               paid ?
-                <span className="badge badge-success">Paid <i className="material-icons">done</i></span>
-                :
-                <span className="badge badge-secondary">
+                <span className="badge bg-success">Paid <i className="material-icons">done</i></span> :
+                <span className="badge bg-secondary">
                   {
                     loading ?
-                      <div className="spinner-border" role="status"><span className="sr-only">Loading...</span></div>
-                      : <div>Not paid</div>
+                      <div className="spinner-border" role="status"></div> :
+                      <div>Not paid</div>
                   }
                 </span>
             }
@@ -114,10 +113,10 @@ const Order = ({orderId, setOrderNotification, addOrder, orders, storeInfo}) => 
               <h3>Shipping details</h3>
               {
                 order.shipments.length !== 0 ?
-                  order.shipments.map(shipment =>
-                    <Shipment key={shipment.id} shipment={shipment} getShipmentItemName={getShipmentItemName} />
-                  )
-                  : <div></div>
+                  order.shipments.map((shipment) =>
+                    <Shipment key={shipment.id} shipment={shipment} getShipmentItemName={getShipmentItemName} />,
+                  ) :
+                  <div></div>
               }
               <p id="shipmentstatus">
                 {shipmentDetails[order.status] ? shipmentDetails[order.status] : shipmentDetails.other}
