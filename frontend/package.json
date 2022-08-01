@@ -8,7 +8,7 @@
     "confetti-js": "0.0.18",
     "currency.js": "^2.0.3",
     "jquery": "^3.6.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-sass": "npm:sass@^1.32.13",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
