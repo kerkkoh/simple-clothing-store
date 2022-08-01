@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^5.0.0",
     "confetti-js": "0.0.18",
     "currency.js": "^2.0.3",
