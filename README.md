@@ -1,8 +1,27 @@
 # Simple Clothing Store
 
+## IMPORTANT
+
+**This project is currently broken** due to a Printful API update (see [the new API docs](https://developers.printful.com/docs/)) that is incompatible with the Printful API SDK used by this project. Printful is planning on releasing an even newer version of their API (see [v2 docs](https://developers.printful.com/docs/v2-beta/)) and thus updating the project to adhere to the old API will not be ideal. Instead, I will be updating the project in a major way to achieve v2.0.0, which will introduce major breaking changes. This is necessary, as this project is already 4 years old, and is not up to date with modern industry standards. I will be creating a separate `next` branch as soon as the version is partially working. You can expect the release in late December 2023 or sometime in Q1 2024.
+
+The software development industry has changed a lot in 4 years. Specifically, serverless has become the new way of running both backend, frontend, and database services. Serverless means roughly what you think it does -- there is no constantly running server, but rather sleeping servers that wake up to perform operations, such as running an API route, serving a page, or performing a database function. This changes much of what traditional services could rely on, as there is no longer a server running constantly, and anything you save in memory (such as variables) is destroyed after the server has performed its operation. In accordance to this project's intention from day 1, it is a fresh and modern starting point for beginners, which shows them the industry standard way of creating semi-complex web services. 4 years ago that modern starting point was React with Create React App + Node.js, but this is clearly not the case when moving to 2024.
+
+Namely, the following changes will be made to bring the project up to modern web development standards:
+1. Migrate to using [Next.js](https://nextjs.org/) -- Allows for [SSR (server-side rendering)](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering) and having an API backend + frontend in the same project
+2. Migrate to using [TypeScript](https://www.typescriptlang.org/) -- Allows for much easier development without having to guess types of variables and is an industry-standard
+3. Update any Printful API calls to either the current API version or Printful API v2
+4. Ensure that the Paypal integration is up to date and functional
+5. Introduce a light database element *if necessary*, as serverless/edge functions as API routes can not retain state (global variables) due to not running on a server 24/7. Likely this will be a lightweight persistent database, which is freely available for everyone such as [Vercel KV](https://vercel.com/docs/storage/vercel-kv) or [Vercel PostgreSQL](https://vercel.com/docs/storage/vercel-postgres)
+
+Ultimately the goal is that beginners can run this project locally with the help of Docker, and **deploy it into the cloud for free** using Vercel. Vercel is of course just one option for a provider, but due to using Docker, the project will be able to be uploaded to any cloud provider (most of them support containers).
+
+---
+
 ![banner](https://i.imgur.com/fg8F52a.png)
 
 [![GitHub license](https://img.shields.io/github/license/kerkkoh/simple-clothing-store)](https://github.com/kerkkoh/simple-clothing-store/blob/master/LICENSE.md)
+
+## Description
 
 This project is a simple **clothing store** implemented with **React** and **Node.js**, aiming for an *almost* databaseless design by utilizing a **Printful** integration.
 
