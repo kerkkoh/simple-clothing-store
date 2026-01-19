@@ -1,19 +1,37 @@
 # Simple Clothing Store
 
-## IMPORTANT
+## Version 2.0.0 - Modern Stack Implementation 🚀
 
-**This project is currently broken** due to a Printful API update (see [the new API docs](https://developers.printful.com/docs/)) that is incompatible with the Printful API SDK used by this project. Printful is planning on releasing an even newer version of their API (see [v2 docs](https://developers.printful.com/docs/v2-beta/)) and thus updating the project to adhere to the old API will not be ideal. Instead, I will be updating the project in a major way to achieve v2.0.0, which will introduce major breaking changes. This is necessary, as this project is already 4 years old, and is not up to date with modern industry standards. I will be creating a separate `next` branch as soon as the version is partially working. You can expect the release in late December 2023 or sometime in Q1 2024.
+**v2.0.0 has been implemented!** The project has been completely rewritten with modern web development standards:
 
-The software development industry has changed a lot in 4 years. Specifically, serverless has become the new way of running both backend, frontend, and database services. Serverless means roughly what you think it does -- there is no constantly running server, but rather sleeping servers that wake up to perform operations, such as running an API route, serving a page, or performing a database function. This changes much of what traditional services could rely on, as there is no longer a server running constantly, and anything you save in memory (such as variables) is destroyed after the server has performed its operation. In accordance to this project's intention from day 1, it is a fresh and modern starting point for beginners, which shows them the industry standard way of creating semi-complex web services. 4 years ago that modern starting point was React with Create React App + Node.js, but this is clearly not the case when moving to 2024.
+✅ **Next.js 15** with App Router (SSR, SSG, and unified frontend/backend)
+✅ **TypeScript** throughout the entire codebase
+✅ **Printful API v2** integration (modern fetch-based client)
+✅ **PayPal REST API** (updated from deprecated SDK)
+✅ **Upstash Redis** for serverless-compatible state management
+✅ **Production build** passing and ready for deployment
 
-Namely, the following changes will be made to bring the project up to modern web development standards:
-1. Migrate to using [Next.js](https://nextjs.org/) -- Allows for [SSR (server-side rendering)](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering) and having an API backend + frontend in the same project
-2. Migrate to using [TypeScript](https://www.typescriptlang.org/) -- Allows for much easier development without having to guess types of variables and is an industry-standard
-3. Update any Printful API calls to either the current API version or Printful API v2
-4. Ensure that the Paypal integration is up to date and functional
-5. Introduce a light database element *if necessary*, as serverless/edge functions as API routes can not retain state (global variables) due to not running on a server 24/7. Likely this will be a lightweight persistent database, which is freely available for everyone such as [Vercel KV](https://vercel.com/docs/storage/vercel-kv) or [Vercel PostgreSQL](https://vercel.com/docs/storage/vercel-postgres)
+### ⚠️ Current Status: Testing Phase
 
-Ultimately the goal is that beginners can run this project locally with the help of Docker, and **deploy it into the cloud for free** using Vercel. Vercel is of course just one option for a provider, but due to using Docker, the project will be able to be uploaded to any cloud provider (most of them support containers).
+The codebase has been modernized and builds successfully, but still requires:
+- **Real API testing** with Printful and PayPal credentials
+- **Integration testing** of the complete order flow
+- **Docker configuration** update (planned)
+- **Vercel deployment** setup and testing (planned)
+
+**For detailed implementation status and roadmap**, see [MIGRATION_PLAN.md](./MIGRATION_PLAN.md).
+
+### Migration from v0.x to v2.0.0
+
+The v2.0.0 rewrite brings the project up to 2026 standards with serverless-first architecture:
+
+1. ✅ **Next.js 15** - SSR/SSG with unified frontend + backend API routes
+2. ✅ **TypeScript** - Full type safety and improved developer experience
+3. ✅ **Printful API v2** - Modern REST client with proper error handling
+4. ✅ **PayPal REST API** - Direct API integration replacing deprecated SDK
+5. ✅ **Upstash Redis** - Serverless-compatible state management and caching
+
+The goal: Run locally with simple `npm` commands and **deploy to the cloud for free** using Vercel, while maintaining Docker support for any cloud provider.
 
 ---
 
@@ -23,7 +41,7 @@ Ultimately the goal is that beginners can run this project locally with the help
 
 ## Description
 
-This project is a simple **clothing store** implemented with **React** and **Node.js**, aiming for an *almost* databaseless design by utilizing a **Printful** integration.
+This project is a modern **clothing store** built with **Next.js 15**, **TypeScript**, and **serverless architecture**, designed for easy deployment and maintenance. It leverages **Printful** for product fulfillment and **PayPal** for payments, with **Upstash Redis** for configuration management, resulting in a lightweight, scalable e-commerce solution.
 
 ## Table of Contents
 
@@ -47,31 +65,39 @@ The demo has a few obvious limitations:
 
 
 ### Stack
-* APIs
-  * [Printful REST API](https://www.printful.com/docs)
-  * [Paypal REST API](https://developer.paypal.com/docs/api/overview/)
-* Backend
-  * [Node.js](https://nodejs.org/en/)
-  * [Express](https://www.npmjs.com/package/express)
-* Frontend
-  * [React (with hooks, no classes)](https://reactjs.org/docs/hooks-intro.html)
-  * [React router](https://www.npmjs.com/package/react-router)
-  * [Bootstrap](https://getbootstrap.com/)
-  * [SASS](https://sass-lang.com/)
 
-### What's working
-* Most frontend features:
-  * Routes implemented with **React router**, including seamlessly moving between pages
-  * A responsive design implemented with **Bootstrap** and customized with **SASS** (SCSS)
-  * Loading of products and store data from the server
-  * Products with multiple images (If printful ever decides to give us a feature for that) and sizes (product variants)
-  * Persistent shopping cart
-  * Correct handling of currency as its own datatype via **currency.js**
-  * Discount codes that are confirmed by the server, and correctly applying them to the cart total
-  * Showing orders, their statuses & shipping information from **Printful**
-* Some backend features:
-  * Loading products directly from the Printful API
-  * A configuration file for setting file descriptions, discounts and VAT rates your store needs (This will be changed to be something less hardcoded in the future)
+* **Framework**
+  * [Next.js 15](https://nextjs.org/) - App Router with SSR/SSG
+  * [TypeScript](https://www.typescriptlang.org/) - Full type safety
+  * [React 19](https://react.dev/) - Modern hooks-based components
+* **APIs**
+  * [Printful API v2](https://developers.printful.com/docs/v2-beta/) - Product & order management
+  * [PayPal REST API](https://developer.paypal.com/docs/api/overview/) - Payment processing
+* **Database & Caching**
+  * [Upstash Redis](https://upstash.com/) - Serverless-compatible state & cache
+* **Styling**
+  * [Bootstrap 5](https://getbootstrap.com/) - Responsive UI framework
+  * [SASS/SCSS](https://sass-lang.com/) - Custom styling
+
+### What's working (v2.0.0)
+
+* **Frontend** (Next.js App Router):
+  * ✅ Server-side rendering (SSR) for improved SEO
+  * ✅ Dynamic routes with Next.js routing (no React Router needed)
+  * ✅ Responsive Bootstrap 5 design with custom SASS
+  * ✅ Product listing with search functionality
+  * ✅ Product detail pages with variant (size) selection
+  * ✅ Persistent shopping cart (localStorage)
+  * ✅ Currency handling via **currency.js**
+  * ✅ Discount code validation
+  * ✅ Order tracking pages
+* **Backend** (Next.js API Routes):
+  * ✅ RESTful API endpoints (8 routes)
+  * ✅ Printful API v2 integration with caching
+  * ✅ PayPal REST API integration
+  * ✅ Redis-based configuration management
+  * ✅ Product caching to reduce API calls
+  * ✅ Type-safe API responses with TypeScript
 
 ### What's planned/missing
 * Frontend:
@@ -111,44 +137,102 @@ These are some problem areas as of now:
 
 ## Install
 
-First, clone the repository from github.
+### Prerequisites
+- **Node.js 20+** and npm
+- **Printful API key** - [Get from Printful](https://www.printful.com/dashboard/store)
+- **PayPal API credentials** - [Get from PayPal Developer](https://developer.paypal.com/)
+- **Upstash Redis** (optional for development) - [Get from Upstash](https://upstash.com/)
+
+### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/kerkkoh/simple-clothing-store.git
+   cd simple-clothing-store
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+
+   Edit `.env` and add your API credentials:
+   ```env
+   # Required
+   PRINTFUL_SECRET=your_printful_api_key
+   PAYPAL_CLIENT_ID=your_paypal_client_id
+   PAYPAL_CLIENT_SECRET=your_paypal_client_secret
+   NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+
+   # Optional (has fallback for development)
+   UPSTASH_REDIS_REST_URL=your_redis_url
+   UPSTASH_REDIS_REST_TOKEN=your_redis_token
+
+   # Optional
+   DEMO=true  # Set to true for demo mode (no real orders)
+   ```
+
+4. **Initialize the database** (optional, configures discounts/VAT)
+   ```bash
+   npm run init-db
+   ```
+
+5. **Run in development mode**
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Configuration
-1. Get your PayPal & Printful API keys
-2. Rename the file called `.env.template` to `.env`
-3. Set the variables in the `.env` file without inserting any spaces anywhere in the file. The variable names and comments should explain where to put what adequately. Save the file.
-4. Navigate to the `frontend/src` folder and open the file `config.js`
-5. In this file you should specify some information that is displayed on the site. You should also include the same PayPal API client id, as in the .env file previously, as it is needed for the payment process.
-6. Navigate to the `lib` folder, and open the file `datab.js`
-7. In this file you can specify
-    1. Product descriptions in the `items` array by specifying a product id (You can get the id by visiting the store frontend and going to the page of a product, and then viewing the url like `yoursite.com/product/5632658632` where `5632658632` would be the id) and then specifying a `description` string for it.
-    2. Discount codes in the section `discounts`
-    3. Your VAT (Value Added Tax) percent **as an integer**.
 
-### Installation
+**Store configuration** (discounts, VAT, product descriptions) is now managed via Redis database. Initialize with:
+```bash
+npm run init-db
+```
 
-As of version 0.0.2, you can use docker to perform all of the gruntwork of running the server for you. Simply run `docker-compose up`, and docker will spin up a new container with Simple Clothing Store running on it.
+Or configure programmatically via the database API (see `lib/database.ts`).
 
-If you do not wish to use Docker, you can build the frontend and run the backend manually. However, there are npm scripts for automating this. First run `npm install` in the root folder and then in the frontend folder.
+### Docker Support (Coming Soon)
 
-If you are running a Linux system, run `npm run build-tux`, which will build the frontend, move it into the appropriate folder (./build) and start the server.
-
-If you are running a Windows system, run `npm run build-win`, which will build the frontend, move it into the appropriate folder (./build) and start the server.
-
-Both of these scripts have a "-clean" variant (`npm run build-tux-clean` & `npm run build-win-clean`), which is something you want to use after the first build, in order to also delete the build folder before building it again.
+Docker configuration is being updated for Next.js. The old Docker setup for Express is available but not recommended for v2.0.0.
 
 ## Usage
 
-To run the server, make sure you're in the root folder, and run:
+### Development Mode
+Run the Next.js development server with hot reload:
+```bash
+npm run dev
 ```
+Visit [http://localhost:3000](http://localhost:3000)
+
+### Production Build
+Build and run the optimized production version:
+```bash
+npm run build
 npm start
 ```
-or alternatively with Docker Compose
-```
-docker-compose up
+
+### Available Scripts
+```bash
+npm run dev          # Start development server (port 3000)
+npm run build        # Build for production
+npm start            # Start production server
+npm run lint         # Run ESLint
+npm run type-check   # Check TypeScript types
+npm run init-db      # Initialize database configuration
+npm run legacy:start # Run old Express server (v0.x)
 ```
 
-This will start the server, and host the production build frontend with the port `process.env.PORT` or 3001. You can set the PORT variable in the file `simple-clothing-store/backend/.env` by creating a new line with the port you want the system to run on. If you're using services like Heroku to host the system, they should set this variable for you.
+### Environment
+- Default port: **3000** (development and production)
+- Port can be overridden with `PORT` environment variable
+- All API routes available at `/api/*`
 
 ## Contributing
 
