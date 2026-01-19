@@ -1,24 +1,31 @@
 {
   "name": "simple-clothing-store",
-  "version": "0.0.2",
-  "description": "Simple webstore implementation with Paypal & Printful integration",
-  "main": "server.js",
+  "version": "2.0.0",
+  "description": "Modern clothing store with Next.js, TypeScript, Printful & PayPal integration",
   "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "build-tux": "cd frontend && npm run build && mv build ../ && cd ../ && npm start",
-    "build-win": "cd frontend && npm run build && move build ../ && cd ../ && npm start",
-    "build-tux-clean": "rmdir -r build && npm run build-tux",
-    "build-win-clean": "RMDIR build /S && npm run build-win"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "init-db": "tsx scripts/init-db.ts",
+    "legacy:start": "node server.js",
+    "legacy:watch": "nodemon server.js"
   },
   "dependencies": {
-    "@paypal/checkout-server-sdk": "^1.0.2",
-    "currency.js": "^2.0.3",
-    "dotenv": "^9.0.2",
-    "express": "^4.17.1"
+    "@paypal/paypal-server-sdk": "^2.1.0",
+    "@paypal/react-paypal-js": "^8.7.0",
+    "@upstash/redis": "^1.34.3",
+    "bootstrap": "^5.3.3",
+    "currency.js": "^2.0.4",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.6",
+    "react-dom": "^19.0.0",
+    "sass": "^1.83.4"
   },
   "engines": {
-    "node": "13.14.x"
+    "node": ">=20.0.0"
   },
   "repository": {
     "url": "https://github.com/kerkkoh/simple-clothing-store"
@@ -33,8 +40,12 @@
     "javascript"
   ],
   "devDependencies": {
-    "eslint": "^7.26.0",
-    "eslint-config-google": "^0.14.0",
-    "nodemon": "^2.0.7"
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.3"
   }
 }
