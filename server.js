@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const checkoutNodeJssdk = require('@paypal/checkout-server-sdk')
 const currency = require('currency.js')
+const path = require('path')
 
 const PrintfulClient = require('./lib/printfulclient.js')
 const payPalClient = require('./lib/paypal.js')
@@ -241,6 +242,11 @@ app.get('/api/discount/:code', (req, res) => {
   // TODO: Concrete implementation
   const discount = db.discounts[req.params.code]
   discount ? res.send(`${discount}`) : res.send('0')
+})
+
+// Catch-all for React Router
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 })
 
 const listener = app.listen(process.env.PORT || 3001, () => {

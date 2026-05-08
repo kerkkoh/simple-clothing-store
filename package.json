@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "build-tux": "cd frontend && npm run build && mv build ../ && cd ../ && npm start",
-    "build-win": "cd frontend && npm run build && move build ../ && cd ../ && npm start",
-    "build-tux-clean": "rmdir -r build && npm run build-tux",
+    "build-tux": "rm -rf build && cd frontend && npm run build && cp -r build ../ && cd ../ && npm start",
+    "build-win": "RMDIR build /S /Q 2>nul & cd frontend && npm run build && xcopy build ..\\build\\ /E /I /Y && cd .. && npm start",
+    "build-tux-clean": "rm -rf build && npm run build-tux",
     "build-win-clean": "RMDIR build /S && npm run build-win"
   },
   "dependencies": {
