@@ -8,7 +8,10 @@ const PrintfulClient = require('./lib/printfulclient.js')
 const payPalClient = require('./lib/paypal.js')
 const db = require('./lib/datab.js')
 
-const pf = new PrintfulClient(process.env.PRINTFUL_SECRET)
+const pf = new PrintfulClient(
+  (process.env.PRINTFUL_SECRET || '').trim(),
+  {storeId: (process.env.PRINTFUL_STORE_ID || '').trim() || undefined},
+)
 const app = express()
 
 let products = []
